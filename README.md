@@ -1,1 +1,3 @@
 # Microsoft_DAT210x
+
+My solutions for the Programming Assignments for the Microsoft DAT210X course, EdX, July 2016.
