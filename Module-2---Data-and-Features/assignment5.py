@@ -18,7 +18,7 @@ df[df == 0] = np.nan
 # Convert these to the appropriate data type as needed, that is, float64 or int64
 #
 # .. your code here ..
-#print df.dtypes
+print df.dtypes
 # No conversion required!
 
 # TODO:
