@@ -41,5 +41,6 @@ plt.show()
 # Are your outlier samples still easily identifiable in the plot?
 # No
 #
-# After adding in the area and perimeter features, does your plot suffer from the same feature scaling issue you had with parallel coordinates?
+# After adding in the area and perimeter features, does your plot suffer from the same feature scaling issue you had with parallel
+# coordinates?
 # No
