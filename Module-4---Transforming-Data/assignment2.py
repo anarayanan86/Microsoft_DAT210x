@@ -6,10 +6,8 @@ import assignment2_helper as helper
 # Look pretty...
 matplotlib.style.use('ggplot')
 
-
 # Do * NOT * alter this line, until instructed!
 scaleFeatures = False
-
 
 # TODO: Load up the dataset and remove any and all rows that have a nan. You should be a pro at this
 # by now ;-)
@@ -23,21 +21,19 @@ df.dropna(axis = 0, how = 'any', inplace = True)
 # You're only labeling by color so you can see the effects of PCA
 labels = ['red' if i=='ckd' else 'green' for i in df.classification]
 
-
 # TODO: Use an indexer to select only the following columns:
 #       ['bgr','wc','rc']
 #
 # .. your code here ..
 df = df[['bgr', 'wc', 'rc']]
 
-
 # TODO: Print out and check your dataframe's dtypes. You'll probably want to call 'exit()' after you print it out so you can stop the
 # program's execution.
 #
-# You can either take a look at the dataset webpage in the attribute info section: https://archive.ics.uci.edu/ml/datasets/Chronic_Kidney_Disease
-# or you can actually peek through the dataframe by printing a few rows.
-# What kind of data type should these three columns be? If Pandas didn't properly detect and convert them to that data type for you, then use
-# an appropriate command to coerce these features into the right type.
+# You can either take a look at the dataset webpage in the attribute info section:
+# https://archive.ics.uci.edu/ml/datasets/Chronic_Kidney_Disease or you can actually peek through the dataframe by printing a few rows.
+# What kind of data type should these three columns be? If Pandas didn't properly detect and convert them to that data type for you,
+# then use an appropriate command to coerce these features into the right type.
 #
 # .. your code here ..
 print df
@@ -58,14 +54,11 @@ print df.dtypes 	# Now they are all floats
 print df.var()
 print "This is the describe output: ", df.describe()
 
-
-# TODO: This method assumes your dataframe is called df. If it isn't, make the appropriate changes. Don't alter the code in scaleFeatures()
-# just yet though!
+# TODO: This method assumes your dataframe is called df. If it isn't, make the appropriate changes. Don't alter the code in
+# scaleFeatures() just yet though!
 #
 # .. your code adjustment here ..
 if scaleFeatures: df = helper.scaleFeatures(df)
-
-
 
 # TODO: Run PCA on your dataset and reduce it to 2 components.
 # Ensure your PCA instance is saved in a variable called 'pca', and that the results of your transformation are saved in 'T'.
@@ -76,13 +69,14 @@ pca = PCA(n_components = 2)
 pca.fit(df)
 T = pca.transform(df)
 
-
-# Plot the transformed data as a scatter plot. Recall that transforming the data will result in a NumPy NDArray. You can either use MatPlotLib
-# to graph it directly, or you can convert it to DataFrame and have pandas do it for you.
+# Plot the transformed data as a scatter plot. Recall that transforming the data will result in a NumPy NDArray. You can either use
+# MatPlotLib to graph it directly, or you can convert it to DataFrame and have pandas do it for you.
 #
-# Since we've already demonstrated how to plot directly with MatPlotLib in Module4/assignment1.py, this time we'll convert to a Pandas Dataframe.
+# Since we've already demonstrated how to plot directly with MatPlotLib in Module4/assignment1.py, this time we'll convert to a Pandas
+# Dataframe.
 #
-# Since we transformed via PCA, we no longer have column names. We know we are in P.C. space, so we'll just define the coordinates accordingly:
+# Since we transformed via PCA, we no longer have column names. We know we are in P.C. space, so we'll just define the coordinates
+# accordingly:
 ax = helper.drawVectors(T, pca.components_, df.columns.values, plt, scaleFeatures)
 T = pd.DataFrame(T)
 T.columns = ['component1', 'component2']
@@ -99,10 +93,13 @@ plt.show()
 # Sort the features below from the largest to the smallest variance amount.
 # wc, bgr, rc
 #
-# As you know, the first thing PCA does is center your dataset about its mean by subtracting the mean from each sample. Looking at the .describe() output of your dataset, particularly the min, max, and mean readings per feature, which feature do you think dominates your X axis? How about the Y axis?
+# As you know, the first thing PCA does is center your dataset about its mean by subtracting the mean from each sample. Looking at the
+# .describe() output of your dataset, particularly the min, max, and mean readings per feature, which feature do you think dominates
+# your X axis? How about the Y axis?
 # wc dominates the X axis, and bgr dominates the Y axis
 #
-# According to your labeling, red plots correspond to chronic kidney disease, and green plots are non-CKD patients. Looking at the scatter plot, are the two classes completely separable, or are there multiple records mixed together?
+# According to your labeling, red plots correspond to chronic kidney disease, and green plots are non-CKD patients. Looking at the
+# scatter plot, are the two classes completely separable, or are there multiple records mixed together?
 # No, a few records are mixed together
 #
 # Lab Questions (Continued)
@@ -110,5 +107,6 @@ plt.show()
 # Did scaling your features affect their variances at all?
 # Yes
 #
-# After scaling your features, are the green patients without chronic kidney disease more cleanly separable from the red patients with chronic kidney disease?
+# After scaling your features, are the green patients without chronic kidney disease more cleanly separable from the red patients
+# with chronic kidney disease?
 # They are more separable
