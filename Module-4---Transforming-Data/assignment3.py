@@ -40,23 +40,19 @@ df.rc = pd.to_numeric(df.rc, errors = 'coerce')
 df.dropna(axis = 0, how = 'any', inplace = True)
 print df
 
-# TODO: PCA Operates based on variance. The variable with the greatest
-# variance will dominate. Go ahead and peek into your data using a
-# command that will check the variance of every feature in your dataset.
-# Print out the results. Also print out the results of running .describe
-# on your dataset.
+# TODO: PCA Operates based on variance. The variable with the greatest variance will dominate. Go ahead and peek into your data using
+# a command that will check the variance of every feature in your dataset. Print out the results. Also print out the results of
+# running .describe on your dataset.
 #
-# Hint: If you don't see all three variables: 'bgr','wc' and 'rc', then
-# you probably didn't complete the previous step properly.
+# Hint: If you don't see all three variables: 'bgr','wc' and 'rc', then you probably didn't complete the previous step properly.
 #
 # .. your code here ..
 print df.var()
 print "This is the describe output: ", df.describe()
 
 
-# TODO: This method assumes your dataframe is called df. If it isn't,
-# make the appropriate changes. Don't alter the code in scaleFeatures()
-# just yet though!
+# TODO: This method assumes your dataframe is called df. If it isn't, make the appropriate changes. Don't alter the code
+# in scaleFeatures() just yet though!
 #
 # .. your code adjustment here ..
 if scaleFeatures: df = helper.scaleFeatures(df)
@@ -72,16 +68,14 @@ pca.fit(df)
 T = pca.transform(df)
 
 
-# Plot the transformed data as a scatter plot. Recall that transforming
-# the data will result in a NumPy NDArray. You can either use MatPlotLib
-# to graph it directly, or you can convert it to DataFrame and have pandas
-# do it for you.
+# Plot the transformed data as a scatter plot. Recall that transforming the data will result in a NumPy NDArray. You can
+# either use MatPlotLib to graph it directly, or you can convert it to DataFrame and have pandas do it for you.
 #
-# Since we've already demonstrated how to plot directly with MatPlotLib in
-# Module4/assignment1.py, this time we'll convert to a Pandas Dataframe.
+# Since we've already demonstrated how to plot directly with MatPlotLib in Module4/assignment1.py, this time we'll convert
+# to a Pandas Dataframe.
 #
-# Since we transformed via PCA, we no longer have column names. We know we
-# are in P.C. space, so we'll just define the coordinates accordingly:
+# Since we transformed via PCA, we no longer have column names. We know we are in P.C. space, so we'll just define the
+# coordinates accordingly:
 ax = helper.drawVectors(T, pca.components_, df.columns.values, plt, scaleFeatures)
 T = pd.DataFrame(T)
 T.columns = ['component1', 'component2']
@@ -92,5 +86,6 @@ plt.show()
 # After adding in all of numeric columns, do the green, non-chronic kidney disease patients group closer together than before?
 # Yes
 #
-# After converting the nominal features to boolean features, do the green, non-chronic kidney disease patients group even closer together than before?
+# After converting the nominal features to boolean features, do the green, non-chronic kidney disease patients group even
+# closer together than before?
 # Yes
