@@ -99,18 +99,19 @@ plt.show()
 
 # Lab Questions:
 # 
-# Between linear PCA and the non-linear Isomap, which algorithm is better able to capture the true nature of the faces dataset when reduced to two component?
+# Between linear PCA and the non-linear Isomap, which algorithm is better able to capture the true nature of the faces dataset
+# when reduced to two components?
 # IsoMap
 #
-# Each coordinate axis of your 3D manifold should correlate highly with one degree of freedom from the original, underlying data. In the isomap plot of the
-# first two components (0 and 1), which 'degree of freedom' do you think was encoded onto first component (the X-axis) encoded? In other words, what varies
-# as you move horizontally in your manifold rendering?
+# Each coordinate axis of your 3D manifold should correlate highly with one degree of freedom from the original, underlying data.
+# In the isomap plot of the first two components (0 and 1), which 'degree of freedom' do you think was encoded onto first component
+# (the X-axis) encoded? In other words, what varies as you move horizontally in your manifold rendering?
 # Left and Right Head Position
 #
-# Alter your code to graph the second and third components (index=1 and 2) instead of the 0th and 1st, for both PCA and Isomap. Look *closely* at the Isomap
-# plot. Can you tell what 'degree of freedom' the X axis represents?
+# Alter your code to graph the second and third components (index=1 and 2) instead of the 0th and 1st, for both PCA and Isomap.
+# Look *closely* at the Isomap plot. Can you tell what 'degree of freedom' the X axis represents?
 # Down and Up Head Position
 #
-# In his experiment, Dr. Tenenbaum set his K-parameter (n_neighbors is SciKit-Learn) to 8. Try reducing that figure down to 3 and re-running your code. Does
-# the X-Axis still represent the same degree of freedom?
+# In his experiment, Dr. Tenenbaum set his K-parameter (n_neighbors is SciKit-Learn) to 8. Try reducing that figure down to 3 and
+# re-running your code. Does the X-Axis still represent the same degree of freedom?
 # Yes
