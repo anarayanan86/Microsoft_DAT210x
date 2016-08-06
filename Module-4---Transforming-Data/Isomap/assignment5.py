@@ -111,7 +111,7 @@ for file1 in os.listdir('Datasets/ALOI/32i'):
 # TODO: Implement Isomap here. Reduce the dataframe df down to three components, using K=6 for your neighborhood size
 #
 # .. your code here .. 
-# See lines 42-44
+# See lines 50-52
 
 
 #
