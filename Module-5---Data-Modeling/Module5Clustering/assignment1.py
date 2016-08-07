@@ -79,9 +79,8 @@ def doKMeans(dataframe):
 doKMeans(df1)
 
 #
-# TODO: Filter out the data so that it only contains samples that have
-# a Date > '2011-01-01', using indexing. Then, in a new figure, plot the
-# crime incidents, as well as a new K-Means run's centroids.
+# TODO: Filter out the data so that it only contains samples that have a Date > '2011-01-01', using indexing. Then,
+# in a new figure, plot the crime incidents, as well as a new K-Means run's centroids.
 #
 # .. your code here ..
 df2 = df1[df1.Date > '2011-01-01']
