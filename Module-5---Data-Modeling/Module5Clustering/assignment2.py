@@ -12,8 +12,8 @@ def showandtell(title=None):
 
 
 #
-# INFO: This dataset has call records for 10 users tracked over the course of 3 years.
-# Your job is to find out where the users likely live and work at!
+# INFO: This dataset has call records for 10 users tracked over the course of 3 years. Your job is to find out where the users
+# likely live and work at!
 
 
 #
@@ -27,16 +27,15 @@ df.CallDate = pd.to_datetime(df.CallDate)
 df.Duration = pd.to_timedelta(df.Duration)
 
 #
-# TODO: Get a distinct list of "In" phone numbers (users) and store the values in a
-# regular python list.
+# TODO: Get a distinct list of "In" phone numbers (users) and store the values in a regular python list.
 # Hint: https://docs.scipy.org/doc/numpy/reference/generated/numpy.ndarray.tolist.html
 #
 # .. your code here ..
 in_numbers = list(df.In.unique())
 
 # 
-# TODO: Create a slice called user1 that filters to only include dataset records where the
-# "In" feature (user phone number) is equal to the first number on your unique list above
+# TODO: Create a slice called user1 that filters to only include dataset records where the "In" feature (user phone number) is
+# equal to the first number on your unique list above
 #
 # .. your code here ..
 user1 = df[(df.In == in_numbers[0])]
@@ -48,9 +47,8 @@ user1.plot.scatter(x='TowerLon', y='TowerLat', c='purple', alpha=0.12, title='Ca
 
 
 #
-# INFO: The locations map above should be too "busy" to really wrap your head around. This
-# is where domain expertise comes into play. Your intuition tells you that people are likely
-# to behave differently on weekends:
+# INFO: The locations map above should be too "busy" to really wrap your head around. This is where domain expertise comes into play.
+# Your intuition tells you that people are likely to behave differently on weekends:
 #
 # On Weekends:
 #   1. People probably don't go into work
@@ -65,34 +63,32 @@ user1.plot.scatter(x='TowerLon', y='TowerLat', c='purple', alpha=0.12, title='Ca
 
 
 #
-# TODO: Add more filters to the user1 slice you created. Add bitwise logic so that you're
-# only examining records that came in on weekends (sat/sun).
+# TODO: Add more filters to the user1 slice you created. Add bitwise logic so that you're only examining records that came in on
+# weekends (sat/sun).
 #
 # .. your code here ..
 user1 = user1[(user1.DOW == 'Sat') | (user1.DOW == 'Sun')]
 
 #
-# TODO: Further filter it down for calls that are came in either before 6AM OR after 10pm (22:00:00).
-# You can use < and > to compare the string times, just make sure you code them as military time
-# strings, eg: "06:00:00", "22:00:00": https://en.wikipedia.org/wiki/24-hour_clock
+# TODO: Further filter it down for calls that are came in either before 6AM OR after 10pm (22:00:00). You can use < and > to compare
+# the string times, just make sure you code them as military time strings, eg: "06:00:00", "22:00:00":
+# https://en.wikipedia.org/wiki/24-hour_clock
 #
-# You might also want to review the Data Manipulation section for this. Once you have your filtered
-# slice, print out its length:
+# You might also want to review the Data Manipulation section for this. Once you have your filtered slice, print out its length:
 #
 # .. your code here ..
 user1 = user1[(user1.CallTime < "06:00:00") | (user1.CallTime > "22:00:00")]
 print len(user1)
 
 #
-# INFO: Visualize the dataframe with a scatter plot as a sanity check. Since you're familiar
-# with maps, you know well that your X-Coordinate should be Longitude, and your Y coordinate
-# should be the tower Latitude. Check the dataset headers for proper column feature names.
+# INFO: Visualize the dataframe with a scatter plot as a sanity check. Since you're familiar with maps, you know well that your
+# X-Coordinate should be Longitude, and your Y coordinate should be the tower Latitude. Check the dataset headers for proper column
+# feature names.
 # https://en.wikipedia.org/wiki/Geographic_coordinate_system#Geographic_latitude_and_longitude
 #
-# At this point, you don't yet know exactly where the user is located just based off the cell
-# phone tower position data; but considering the below are for Calls that arrived in the twilight
-# hours of weekends, it's likely that wherever they are bunched up is probably near where the
-# caller's residence:
+# At this point, you don't yet know exactly where the user is located just based off the cell phone tower position data; but
+# considering the below are for Calls that arrived in the twilight hours of weekends, it's likely that wherever they are bunched up
+# is probably near the caller's residence:
 fig = plt.figure()
 ax = fig.add_subplot(111)
 ax.scatter(user1.TowerLon,user1.TowerLat, c='g', marker='o', alpha=0.2)
@@ -100,16 +96,14 @@ ax.set_title('Weekend Calls (<6am or >10p)')
 #showandtell()  # TODO: Comment this line out when you're ready to proceed
 
 #
-# TODO: Run K-Means with a K=1. There really should only be a single area of concentration. If you
-# notice multiple areas that are "hot" (multiple areas the usr spends a lot of time at that are FAR
-# apart from one another), then increase K=2, with the goal being that one of the centroids will
-# sweep up the annoying outliers; and the other will zero in on the user's approximate home location.
+# TODO: Run K-Means with a K=1. There really should only be a single area of concentration. If you notice multiple areas that are
+# "hot" (multiple areas the usr spends a lot of time at that are FAR apart from one another), then increase K=2, with the goal being
+# that one of the centroids will sweep up the annoying outliers; and the other will zero in on the user's approximate home location.
 # Or rather the location of the cell tower closest to their home.....
 #
-# Be sure to only feed in Lat and Lon coordinates to the KMeans algo, since none of the other
-# data is suitable for your purposes. Since both Lat and Lon are (approximately) on the same scale,
-# no feature scaling is required. Print out the centroid locations and add them onto your scatter
-# plot. Use a distinguishable marker and color.
+# Be sure to only feed in Lat and Lon coordinates to the KMeans algo, since none of the other data is suitable for your purposes.
+# Since both Lat and Lon are (approximately) on the same scale, no feature scaling is required. Print out the centroid locations and
+# add them onto your scatter plot. Use a distinguishable marker and color.
 #
 # Hint: Make sure you graph the CORRECT coordinates. This is part of your domain expertise.
 #
@@ -127,8 +121,8 @@ showandtell()  # TODO: Comment this line out when you're ready to proceed
 
 
 #
-# TODO: Repeat the above steps for all 10 individuals, being sure to record their approximate home
-# locations. You might want to use a for-loop, unless you enjoy typing.
+# TODO: Repeat the above steps for all 10 individuals, being sure to record their approximate home locations. You might want to use
+# a for-loop, unless you enjoy typing.
 #
 # .. your code here ..
 
@@ -152,7 +146,7 @@ for i in range(10):
 showandtell()
 
 # Lab Questions:
-# Use Google Maps to find the location of the following apartment complexes in the Dallas, TX, USA area. Then keeping that information in mind,
-# answer in the question:
+# Use Google Maps to find the location of the following apartment complexes in the Dallas, TX, USA area. Then keeping that information
+# in mind, answer in the question:
 # Which of these Apartment Complexes does the first user in the CDR likely live at?
 # Spanish Grove Apartments
