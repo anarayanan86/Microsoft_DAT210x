@@ -10,11 +10,9 @@ def showandtell(title=None):
   plt.show()
   exit()
 
-
 #
 # INFO: This dataset has call records for 10 users tracked over the course of 3 years. Your job is to find out where the users
 # likely live and work at!
-
 
 #
 # TODO: Load up the dataset and take a peek at its head
@@ -40,11 +38,9 @@ in_numbers = list(df.In.unique())
 # .. your code here ..
 user1 = df[(df.In == in_numbers[0])]
 
-
 # INFO: Plot all the call locations
 user1.plot.scatter(x='TowerLon', y='TowerLat', c='purple', alpha=0.12, title='Call Locations', s = 30)
 #showandtell()  # Comment this line out when you're ready to proceed
-
 
 #
 # INFO: The locations map above should be too "busy" to really wrap your head around. This is where domain expertise comes into play.
@@ -118,7 +114,6 @@ centroids = kmeans.cluster_centers_
 ax.scatter(x = centroids[:, 0], y = centroids[:, 1], c = 'r', marker = 'x', s = 100)
 
 showandtell()  # TODO: Comment this line out when you're ready to proceed
-
 
 #
 # TODO: Repeat the above steps for all 10 individuals, being sure to record their approximate home locations. You might want to use
