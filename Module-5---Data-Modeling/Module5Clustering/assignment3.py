@@ -169,4 +169,4 @@ showandtell('Weekday Calls Centroids')  # Comment this line out when you're read
 # Run your assignment with K=3. Look at the code that gets the mean CallTime value for the cluster with the least amount of samples
 # assigned to it (the cluster we suspect corresponds to the user transiting to work). What hour is the average CallTime value of that
 # cluster closest to?
-# 8 am'''
+# 8 am
