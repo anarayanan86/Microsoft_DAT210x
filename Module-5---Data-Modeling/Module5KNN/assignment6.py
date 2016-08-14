@@ -123,29 +123,29 @@ print "Corrected length of dataframe is:", len(df)
 if Test_PCA:
   # INFO: PCA is used *before* KNeighbors to simplify your high dimensionality image samples down to just 2 principal components! A lot
   # of information (variance) is lost during the process, as I'm sure you can imagine. But you have to drop the dimension down to two,
-  # otherwise you wouldn't be able to visualize a 2D decision surface / boundary. In the wild, you'd probably leave in a lot more dimensions,
-  # but wouldn't need to plot the boundary; simply checking the results would suffice.
+  # otherwise you wouldn't be able to visualize a 2D decision surface / boundary. In the wild, you'd probably leave in a lot more
+  # dimensions, but wouldn't need to plot the boundary; simply checking the results would suffice.
   #
 
   #
-  # TODO: Implement PCA here. Fit and transform your data. Make sure you do not replace your original dataset and instead, store the results
-  # in a new variable (e.g. "X" instead of df)
+  # TODO: Implement PCA here. Fit and transform your data. Make sure you do not replace your original dataset and instead, store
+  # the results in a new variable (e.g. "X" instead of df)
   #
   # .. your code here ..
-  pca = PCA(n_components = True)
+  pca = PCA(n_components = 2)
   X = pca.fit_transform(df)
 
 else:
-  # INFO: Isomap is used *before* KNeighbors to simplify your high dimensionality image samples down to just 2 components! A lot of information
-  # has been lost during the process, as I'm sure you can imagine. But if you have non-linear data that can be represented on a 2D manifold,
-  # you probably will be left with a far superior dataset to use for classification. Plus by having the images in 2D space, you can plot them
-  # as well as visualize a 2D decision surface / boundary. In the wild, you'd probably leave in a lot more dimensions, but wouldn't need to
-  # plot the boundary; simply checking the results would suffice.
+  # INFO: Isomap is used *before* KNeighbors to simplify your high dimensionality image samples down to just 2 components! A lot of
+  # information has been lost during the process, as I'm sure you can imagine. But if you have non-linear data that can be represented
+  # on a 2D manifold, you probably will be left with a far superior dataset to use for classification. Plus by having the images in 2D
+  # space, you can plot them as well as visualize a 2D decision surface / boundary. In the wild, you'd probably leave in a lot more
+  # dimensions, but wouldn't need to plot the boundary; simply checking the results would suffice.
   #
 
   #
-  # TODO: Implement Isomap here. Fit and transform your data. Make sure you do not replace your original dataset and instead, store the
-  # results in a new variable (e.g. "X" instead of df)
+  # TODO: Implement Isomap here. Fit and transform your data. Make sure you do not replace your original dataset and instead, store
+  # the results in a new variable (e.g. "X" instead of df)
   #
   # .. your code here ..
   iso = manifold.Isomap(n_neighbors = 6, n_components = 2)
@@ -164,8 +164,8 @@ data_train, data_test, label_train, label_test = train_test_split(X, label, test
 
 #
 # TODO: Implement KNeighborsClassifier here. You can use any K value from 1 through 20, so play around with it and attempt to get
-# good accuracy. This is the heart of this assignment: Looking at the 2D points that represent your images, along with a list of "answers"
-# or correct class labels that those 2d representations should be.
+# good accuracy. This is the heart of this assignment: Looking at the 2D points that represent your images, along with a list of
+# "answers" or correct class labels that those 2d representations should be.
 #
 # .. your code here ..
 from sklearn.neighbors import KNeighborsClassifier
@@ -173,8 +173,8 @@ knn = KNeighborsClassifier(n_neighbors = 5)
 knn.fit(data_train, label_train)
 
 # NOTE: K-NEIGHBORS DOES NOT CARE WHAT THE ANSWERS SHOULD BE! In fact, it just tosses that information away. All KNeighbors cares about
-# storing is your training data (data_train) so that later on when you attempt to predict or score samples, it can derive a class for them
-# based on the labeling of the sample's near neighbors.
+# storing is your training data (data_train) so that later on when you attempt to predict or score samples, it can derive a class for
+# them based on the labeling of the sample's near neighbors.
 
 #
 # TODO: Calculate + Print the accuracy of the testing set (data_test and label_test).
@@ -188,8 +188,8 @@ Plot2DBoundary(data_train, label_train, data_test, label_test)
 
 # Lab Questions:
 #
-# Only one of the following setups is ideal if you plan on using SciKit-Learn's KNeighbors classifier to predict the label of your samples
-# after transforming them. Which is it?
+# Only one of the following setups is ideal if you plan on using SciKit-Learn's KNeighbors classifier to predict the label of your
+# samples after transforming them. Which is it?
 #
-# Fit and transform your data using PCA or Isomap. Split your data. Then fit the KNeighbors model against the training data and labels. Then
-# predict the class of your testing data. - correct
+# Fit and transform your data using PCA or Isomap. Split your data. Then fit the KNeighbors model against the training data and labels.
+# Then predict the class of your testing data. - correct
