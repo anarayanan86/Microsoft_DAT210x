@@ -115,9 +115,9 @@ plt.show()
 # sending your training or testing data to .fit / .score, do a my_column = my_column.reshape(-1,1). This will convert your 1D
 # array of [n_samples], to a 2D array shaped like [n_samples, 1]. A single feature, with many samples.
 #
-# If you did something like my_column = [my_column], that would produce an array in the shape of [1, n_samples], which is incorrect because
-# SKLearn expects your data to be arranged as [n_samples, n_features]. Keep in mind, all of the above only relates to your "X" or input
-# data, and does not apply to your "y" or labels.
+# If you did something like my_column = [my_column], that would produce an array in the shape of [1, n_samples], which is incorrect
+# because SKLearn expects your data to be arranged as [n_samples, n_features]. Keep in mind, all of the above only relates to your
+# "X" or input data, and does not apply to your "y" or labels.
 
 # Lab Questions:
 # Enter the 2014 life expectancy prediction for white males living within the U.S, using only data recorded prior to 1986:
