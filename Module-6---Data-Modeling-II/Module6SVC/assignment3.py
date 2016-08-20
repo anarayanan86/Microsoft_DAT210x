@@ -32,9 +32,9 @@ T = preprocessing.scale(X)
 # The accuracy score keeps creeping upwards. Let's have one more go at it. Remember how in a previous lab we discovered that SVM's
 # are a bit sensitive to outliers and that just throwing all of our unfiltered, dirty or noisy data at it, particularly in
 # high-dimensionality space, can actually cause the accuracy score to suffer?
-# Well, let's try to get rid of some useless features. Immediately after you do the pre-processing, run PCA on your dataset. The original
-# dataset has 22 columns and 1 label column. So try experimenting with PCA n_component values between 4 and 14. Are you able to get a 
-# better accuracy?
+# Well, let's try to get rid of some useless features. Immediately after you do the pre-processing, run PCA on your dataset. The
+# original dataset has 22 columns and 1 label column. So try experimenting with PCA n_component values between 4 and 14. Are you able
+# to get a better accuracy?
 '''
 from sklearn.decomposition import PCA
 pca = PCA(n_components = 14)
@@ -44,8 +44,8 @@ X_pca = pca.fit_transform(T)
 
 # If you are not, then forget about PCA entirely, unless you want to visualize your data. However if you are able to get a higher score,
 # then be *sure* keep that figure in mind, and comment out all the PCA code.
-# In the same spot, run Isomap on the data, before sending it to the train / test split. Manually experiment with every inclusive combination
-# of n_neighbors between 2 and 5, and n_components between 4 and 6. Are you able to get a better accuracy?
+# In the same spot, run Isomap on the data, before sending it to the train / test split. Manually experiment with every inclusive
+# combination of n_neighbors between 2 and 5, and n_components between 4 and 6. Are you able to get a better accuracy?
 from sklearn.manifold import Isomap
 
 # You're going to have to write nested for loops that wrap around everything from here on down!
